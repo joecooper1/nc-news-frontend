@@ -13,7 +13,7 @@ export const TopicItem = styled.li.attrs(props => ({ key: props.key }))`
   color: black;
 `;
 
-export const SearchBarForm = styled.form`
+export const SearchBarForm = styled.div`
   margin-right: 20px;
 `;
 

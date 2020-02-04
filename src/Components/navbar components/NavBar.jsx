@@ -11,8 +11,11 @@ class NavBar extends React.Component {
   render() {
     return (
       <nav>
-        <Topics topics={this.state.topics} />
-        <SearchBar />
+        <Topics
+          topics={this.state.topics}
+          resetSearch={this.props.resetSearch}
+        />
+        <SearchBar doSearch={this.props.doSearch} />
       </nav>
     );
   }

@@ -29,5 +29,64 @@ export const ArticleCard = styled.li.attrs(props => ({ key: props.key }))`
   padding: 0px 10px 0px 10px;
   text-align: left;
   line-height: 0px;
-  key: ;
+`;
+
+export const ArticleBody = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  grid-area: 3/1/4/2;
+  margin: 20px;
+  min-height: 400px;
+  background-color: lightskyblue;
+  padding: 10px;
+  scroll-behaviour: smooth;
+`;
+
+export const ArticleInfo = styled.aside`
+  color: grey;
+`;
+
+export const ArticleText = styled.p`
+  text-align: left;
+  line-height: 2em;
+`;
+
+export const Line = styled.div`
+  height: 1px;
+  width: 98%;
+  background-color: black;
+  align: center;
+  border-bottom: 1px grey;
+  margin-top: 20px;
+`;
+
+export const CommentsDisplay = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  background-color: white;
+  padding-right: 20px;
+`;
+
+export const Comment = styled.li`
+  padding-top: 10px;
+  text-align: left;
+  list-style-type: none;
+`;
+
+export const CommentInfo = styled.aside`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const VoteCount = styled.span`
+  color: red;
+  ${props =>
+    props.voteCount > 0 &&
+    css`
+      color: green;
+    `};
 `;

@@ -2,6 +2,7 @@ import React from "react";
 import Prefs from "./Prefs";
 import { ArticlesDisplay, ArticleCard } from "../../Styles/Main";
 import * as api from "../../api";
+import { Link } from "@reach/router";
 
 class ArticleList extends React.Component {
   state = {
@@ -16,7 +17,7 @@ class ArticleList extends React.Component {
 
   render() {
     return (
-      <main>
+      <main className="articleList">
         <Prefs
           total_count={this.state.total_count}
           changeLimit={this.changeLimit}
@@ -26,15 +27,16 @@ class ArticleList extends React.Component {
         />
         <ArticlesDisplay>
           {this.state.articles.map(article => {
+            const articleLink = `/articles/${article.article_id}`;
             return (
               <ArticleCard key={article.article_id}>
-                <h5>{article.title}</h5>
+                <p>{article.topic}</p>
+                <h4>
+                  <Link to={articleLink}>{article.title}</Link>
+                </h4>
+                <p>by {article.author}</p>
                 <p>
-                  by {article.author} {article.topic}
-                </p>
-                <p>
-                  {article.created_at}
-                  Votes: {article.votes}
+                  {article.created_at.slice(0, 10)} Votes: {article.votes}{" "}
                   Comments: {article.comment_count}
                 </p>
               </ArticleCard>
@@ -47,27 +49,13 @@ class ArticleList extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     console.log("up");
-    if (this.props.topic !== prevProps.topic)
-      api
-        .getAllArticles(
-          this.state.limit,
-          this.state.sort_by,
-          this.state.order,
-          1,
-          this.props.topic.toLowerCase()
-        )
-        .then(({ articles, total_count }) => {
-          this.setState({
-            articles: articles,
-            total_count: Math.ceil(total_count / this.state.limit),
-            page: 1
-          });
-        });
 
     if (
       this.state.limit !== prevState.limit ||
       this.state.sort_by !== prevState.sort_by ||
-      this.state.order !== prevState.order
+      this.state.order !== prevState.order ||
+      this.props.topic !== prevProps.topic ||
+      this.props.searchTerm !== prevProps.searchTerm
     )
       api
         .getAllArticles(
@@ -75,7 +63,8 @@ class ArticleList extends React.Component {
           this.state.sort_by,
           this.state.order,
           1,
-          this.props.topic.toLowerCase()
+          this.props.topic.toLowerCase(),
+          this.props.searchTerm
         )
         .then(({ articles, total_count }) => {
           this.setState({
@@ -92,7 +81,8 @@ class ArticleList extends React.Component {
           this.state.sort_by,
           this.state.order,
           this.state.page,
-          this.props.topic.toLowerCase()
+          this.props.topic.toLowerCase(),
+          this.props.searchTerm
         )
         .then(({ articles, total_count }) => {
           this.setState({
@@ -103,13 +93,15 @@ class ArticleList extends React.Component {
   }
 
   componentDidMount() {
+    console.log("mount");
     api
       .getAllArticles(
         this.state.limit,
         this.state.sort_by,
         this.state.order,
         this.state.page,
-        this.props.topic.toLowerCase()
+        this.props.topic.toLowerCase(),
+        undefined
       )
       .then(({ articles, total_count }) => {
         this.setState({

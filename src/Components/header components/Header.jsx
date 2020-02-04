@@ -1,15 +1,17 @@
 import React from "react";
 import Login from "./Login";
-import Title from "../../Styles/Title";
+import { Title } from "../../Styles/Title";
 import { Link } from "@reach/router";
 
-const Header = () => {
+const Header = props => {
   return (
     <header>
       <Title>
-        <Link to="/">NC NEWS</Link>
+        <Link to="/" onClick={props.resetSearch}>
+          NC NEWS
+        </Link>
       </Title>
-      <Login />
+      <Login user={props.user} changeUser={props.changeUser} />
     </header>
   );
 };

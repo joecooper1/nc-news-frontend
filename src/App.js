@@ -7,21 +7,37 @@ import SideBar from "./Components/sidebar components/SideBar";
 
 class App extends React.Component {
   state = {
-    topic: "",
     searchTerm: "",
-    user: ""
+    user: "grumpy19",
+    isLoading: true
   };
 
   render() {
     return (
       <div className="App">
-        <Header />
-        <NavBar />
-        <Main />
+        <Header
+          resetSearch={this.resetSearch}
+          user={this.state.user}
+          changeUser={this.changeUser}
+        />
+        <NavBar doSearch={this.doSearch} resetSearch={this.resetSearch} />
+        <Main searchTerm={this.state.searchTerm} user={this.state.user} />
         <SideBar />
       </div>
     );
   }
+
+  doSearch = input => {
+    this.setState({ searchTerm: input });
+  };
+
+  resetSearch = () => {
+    this.setState({ searchTerm: "" });
+  };
+
+  changeUser = event => {
+    this.setState({ user: event.target.value });
+  };
 }
 
 export default App;
