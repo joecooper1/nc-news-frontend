@@ -1,12 +1,20 @@
 import React from "react";
 import { TopicList, TopicItem } from "../../Styles/Navbar";
+import { Link } from "@reach/router";
 
-const Topics = () => {
+const Topics = ({ topics }) => {
   return (
     <TopicList id="Topics">
-      <TopicItem>Cooking</TopicItem>
-      <TopicItem>Coding</TopicItem>
-      <TopicItem>Football</TopicItem>
+      {topics.map(topic => {
+        const topicLink = `/${topic}`;
+        return (
+          <TopicItem key={topic} id={topic}>
+            <Link to={topicLink} key={topicLink} className="topic">
+              {topic}
+            </Link>
+          </TopicItem>
+        );
+      })}
     </TopicList>
   );
 };

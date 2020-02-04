@@ -1,17 +1,15 @@
 import React from "react";
 
-class Main extends React.Component {
-  state = {
-    view: "normal",
-    sort_by: "created_at",
-    order: "desc",
-    limit: 10,
-    page: 1
-  };
+import ArticleList from "./ArticleList";
+import { Router } from "@reach/router";
 
-  render() {
-    return <main></main>;
-  }
-}
+const Main = () => {
+  return (
+    <Router>
+      <ArticleList path="/" topic="" />
+      <ArticleList path="/:topic" />
+    </Router>
+  );
+};
 
 export default Main;

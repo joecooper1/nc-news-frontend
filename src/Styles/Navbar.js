@@ -8,8 +8,9 @@ export const TopicList = styled.ul`
   background-color: lightblue;
 `;
 
-export const TopicItem = styled.li`
+export const TopicItem = styled.li.attrs(props => ({ key: props.key }))`
   padding: 10px;
+  color: black;
 `;
 
 export const SearchBarForm = styled.form`
