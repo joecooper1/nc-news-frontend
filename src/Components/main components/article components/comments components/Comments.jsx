@@ -1,40 +1,48 @@
 import React from "react";
-import {
-  CommentsDisplay,
-  Line,
-  Comment,
-  CommentInfo,
-  VoteCount
-} from "../../../../Styles/Main";
+import { CommentsDisplay, CommentInput } from "../../../../Styles/Main";
 import * as api from "../../../../api";
+import Comment from "./Comment";
 
 class Comments extends React.Component {
   state = {
-    comments: []
+    comments: [],
+    newComment: false,
+    commentInput: ""
   };
 
   render() {
+    let typeNewComment = "";
+    if (this.state.newComment) {
+      typeNewComment = (
+        <form onSubmit={this.postComment}>
+          <CommentInput>
+            <textarea
+              onChange={this.handleChange}
+              value={this.state.commentInput}
+              placeholder="add a comment..."
+              style={{ width: "inherit", height: "inherit" }}
+            ></textarea>
+          </CommentInput>
+          <button>Submit</button>
+        </form>
+      );
+    }
+
     return (
       <CommentsDisplay>
+        <button id="addButton" onClick={this.addCommentToggle}>
+          +
+        </button>
+        {typeNewComment}
         {this.state.comments.map(comment => {
           return (
-            <Comment>
-              <CommentInfo>
-                <p>
-                  <strong>{comment.author}</strong> &nbsp;
-                  <button>thumbs up</button> &nbsp;{" "}
-                  <VoteCount voteCount={comment.votes}>
-                    {comment.votes}
-                  </VoteCount>
-                </p>
-                <p style={{ color: "grey" }}>
-                  {comment.created_at.slice(11, 19)} on{" "}
-                  {comment.created_at.slice(0, 10)}
-                </p>
-              </CommentInfo>{" "}
-              {comment.body}
-              <Line></Line>
-            </Comment>
+            <Comment
+              key={comment.comment_id}
+              comment={comment}
+              vote={this.vote}
+              user={this.props.user}
+              deleteComment={this.deleteComment}
+            />
           );
         })}
       </CommentsDisplay>
@@ -48,6 +56,51 @@ class Comments extends React.Component {
         this.setState({ comments: comments });
       });
   }
+
+  vote(comment_id, num) {
+    api.patchVotes(comment_id, num).then(() => {});
+  }
+
+  deleteComment = comment_id => {
+    api.deleteCommentById(comment_id).then(() => {
+      api
+        .getComments(this.props.article_id, "created_at", "desc")
+        .then(({ comments }) => {
+          this.setState({
+            comments: comments
+          });
+        });
+    });
+  };
+
+  addCommentToggle = () => {
+    this.setState(currentState => {
+      return { newComment: !currentState.newComment };
+    });
+  };
+
+  handleChange = event => {
+    this.setState({ commentInput: event.target.value });
+  };
+
+  postComment = event => {
+    event.preventDefault();
+    api
+      .postNewComment(
+        this.state.commentInput,
+        this.props.user,
+        this.props.article_id
+      )
+      .then(({ comment }) => {
+        this.setState(currentState => {
+          return {
+            comments: [comment, ...currentState.comments],
+            commentInput: "",
+            newComment: false
+          };
+        });
+      });
+  };
 }
 
 export default Comments;

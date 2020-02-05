@@ -47,3 +47,26 @@ a {
   text-decoration: none;
   color: black;
 }
+
+#addButton {
+  width: 30px;
+  margin-top: 10px;
+  align-self: center;
+  border-radius: 50%;
+  height: 30px;
+}
+
+.editArticleForm {
+  width: 95%;
+  line-height: 1em;
+  height: 400px;
+  margin-bottom: 40px;
+}
+
+.articleText {
+  width: inherit;
+  font-family: inherit;
+  height: 100%;
+  overflow-y: visible;
+  line-height: 2em;
+}

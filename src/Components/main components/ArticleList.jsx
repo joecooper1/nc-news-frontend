@@ -1,6 +1,10 @@
 import React from "react";
 import Prefs from "./Prefs";
-import { ArticlesDisplay, ArticleCard } from "../../Styles/Main";
+import {
+  ArticlesDisplay,
+  ArticleCard,
+  ArticleCardInfo
+} from "../../Styles/Main";
 import * as api from "../../api";
 import { Link } from "@reach/router";
 
@@ -28,17 +32,27 @@ class ArticleList extends React.Component {
         <ArticlesDisplay>
           {this.state.articles.map(article => {
             const articleLink = `/articles/${article.article_id}`;
+            const topicLink = `/${article.topic}`;
             return (
               <ArticleCard key={article.article_id}>
-                <p>{article.topic}</p>
-                <h4>
+                <h3>
                   <Link to={articleLink}>{article.title}</Link>
-                </h4>
-                <p>by {article.author}</p>
+                </h3>{" "}
+                <ArticleCardInfo>
+                  <p>
+                    in <Link to={topicLink}>{article.topic}</Link>
+                  </p>
+                  <p>by {article.author}</p>
+                  <p>{article.created_at.slice(0, 10)}</p>
+                  <p>Votes: {article.votes}</p>
+                  <p>Comments: {article.comment_count}</p>
+                </ArticleCardInfo>
+                {/* <ArticleCardInfo>{article.topic}</ArticleCardInfo>
+                <ArticleCardInfo>by {article.author}</ArticleCardInfo>
                 <p>
-                  {article.created_at.slice(0, 10)} Votes: {article.votes}{" "}
-                  Comments: {article.comment_count}
-                </p>
+                  {article.created_at.slice(0, 10)} {" "}
+                  
+                </p> */}
               </ArticleCard>
             );
           })}

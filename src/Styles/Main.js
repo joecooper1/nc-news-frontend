@@ -17,18 +17,19 @@ export const ArticlesDisplay = styled.ul`
   display: flex;
   flex-direction: column;
   align-content: flex-start;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: flex-start;
   max-height: 100vh;
   overflow-y: scroll;
 `;
 
 export const ArticleCard = styled.li.attrs(props => ({ key: props.key }))`
-  display: grid;
   background-color: white;
   padding: 0px 10px 0px 10px;
   text-align: left;
-  line-height: 0px;
+  margin: 0px 20px 0 0;
+  list-style-type: none;
+  border-bottom: 1px solid black;
 `;
 
 export const ArticleBody = styled.main`
@@ -69,10 +70,12 @@ export const CommentsDisplay = styled.ul`
   padding-right: 20px;
 `;
 
-export const Comment = styled.li`
+export const CommentStyle = styled.li`
   padding-top: 10px;
   text-align: left;
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const CommentInfo = styled.aside`
@@ -89,4 +92,40 @@ export const VoteCount = styled.span`
     css`
       color: green;
     `};
+`;
+
+export const DeleteButton = styled.div`
+  color: red;
+  border-color: transparent;
+  background-color: white;
+  text-align: right;
+`;
+
+export const CommentInput = styled.div`
+  width: 100%;
+  height: 60px;
+`;
+
+export const ArticleCardInfo = styled.span`
+  color: grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: -10px;
+  width: 60%;
+`;
+
+export const EditBox = styled.span`
+  opacity: 90%;
+  color: grey;
+  border-color: transparent;
+  background-color: transparent;
+`;
+
+export const LoadingBar = styled.p`
+  grid-area: 3/1/4/2;
+  margin: 20px;
+  min-height: 400px;
+  background-color: lightskyblue;
+  padding: 10px;
 `;

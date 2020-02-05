@@ -1,20 +1,26 @@
 import React from "react";
 import * as api from "../../../api";
 import Comments from "./comments components/Comments";
+import EditArticleOptions from "./EditArticleOptions";
+import ArticleTextVariable from "./ArticleTextVariable";
 import {
   ArticleBody,
   ArticleInfo,
-  ArticleText,
-  Line
+  Line,
+  LoadingBar
 } from "../../../Styles/Main";
 
 class Article extends React.Component {
   state = {
-    article: {},
-    visibleComments: false
+    article: { created_at: "" },
+    visibleComments: false,
+    isLoading: true,
+    articleEdit: false
   };
 
   render() {
+    const { article } = this.state;
+
     let commentBox = "";
     let comments = "";
     if (this.state.visibleComments === false) {
@@ -22,21 +28,40 @@ class Article extends React.Component {
       comments = <div></div>;
     } else {
       commentBox = "Hide comments";
-      comments = <Comments article_id={this.state.article.article_id} />;
+      comments = (
+        <Comments
+          article_id={this.state.article.article_id}
+          user={this.props.user}
+        />
+      );
     }
 
-    const { article } = this.state;
+    if (this.state.isLoading) {
+      return <LoadingBar>Loading...</LoadingBar>;
+    }
+
     return (
       <ArticleBody>
         <ArticleInfo>
-          by {article.author} / posted: {article.created_at}
+          by {article.author} / posted: {article.created_at.slice(0, 10)}
         </ArticleInfo>
         <h2>{article.title}</h2>
         <ArticleInfo>
-          Votes: {article.votes} Comments: {article.comment_count}
+          Votes: {article.votes} Comments: {article.comment_count}{" "}
+          <EditArticleOptions
+            user={this.props.user}
+            article={this.state.article}
+            editArticle={this.editArticle}
+            removeArticle={this.removeArticle}
+          />
         </ArticleInfo>
         <Line />
-        <ArticleText>{article.body}</ArticleText>
+        <ArticleTextVariable
+          article={this.state.article}
+          articleEdit={this.state.articleEdit}
+          commitChanges={this.commitChanges}
+          cancelChanges={this.cancelChanges}
+        />
         <Line />
         <button onClick={this.showOrHideComments}>{commentBox}</button>
         {comments}
@@ -46,7 +71,10 @@ class Article extends React.Component {
 
   componentDidMount() {
     api.getArticle(this.props.uri).then(({ article }) => {
-      this.setState({ article: article });
+      this.setState({
+        article: article,
+        isLoading: false
+      });
     });
   }
 
@@ -54,6 +82,32 @@ class Article extends React.Component {
     this.setState(currentState => {
       return { visibleComments: !currentState.visibleComments };
     });
+  };
+
+  editArticle = () => {
+    this.setState({ articleEdit: true });
+  };
+
+  commitChanges = articleInput => {
+    api
+      .patchArticle(articleInput, this.state.article.article_id)
+      .then(articleResponse => {
+        return this.setState({
+          articleEdit: false
+        });
+      });
+  };
+
+  cancelChanges = () => {
+    this.setState({
+      articleEdit: false
+    });
+  };
+
+  removeArticle = event => {
+    console.log("here");
+    event.preventDefault();
+    api.deleteArticleById(this.state.article.article_id);
   };
 }
 
