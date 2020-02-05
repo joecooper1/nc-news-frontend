@@ -8,6 +8,12 @@
   grid-template: 10vh 10vh 100% / 7fr 3fr;
 }
 
+@media only screen and (max-width: 600px) {
+  .App {
+    grid-template: 10vh 10vh 100% / 1fr;
+  }
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -15,18 +21,16 @@ header {
   padding-left: 30px;
   padding-right: 30px;
   align-items: center;
-  background-color: lightcoral;
+  background-color: rgb(6, 21, 71);
   grid-area: 1/1/2/3;
+  color: white;
 }
 
-nav {
-  background-color: lightseagreen;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2px;
-  grid-area: 2/1/3/3;
+@media only screen and (max-width: 600px) {
+  header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 .articleList {

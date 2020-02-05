@@ -6,8 +6,8 @@ import { Link } from "@reach/router";
 const Header = props => {
   return (
     <header>
-      <Title>
-        <Link to="/" onClick={props.resetSearch}>
+      <Title window={window.innerWidth}>
+        <Link to="/" onClick={props.resetSearch} style={{ color: "white" }}>
           NC NEWS
         </Link>
       </Title>

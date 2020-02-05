@@ -6,10 +6,16 @@ class Login extends React.Component {
   state = { users: [] };
 
   render() {
+    let loggedInAs = "loggedInAs";
+    if (window.innerWidth < 600) loggedInAs = "";
     return (
-      <LogInBar>
-        <p>Logged in as </p>{" "}
-        <UserDropDown user={this.props.user} onChange={this.props.changeUser}>
+      <LogInBar window={window.innerWidth}>
+        <p>{loggedInAs}</p> &nbsp; &nbsp;
+        <UserDropDown
+          user={this.props.user}
+          onChange={this.props.changeUser}
+          window={window.innerWidth}
+        >
           {this.state.users.map(user => {
             return <option key={user}>{user}</option>;
           })}

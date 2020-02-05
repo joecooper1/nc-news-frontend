@@ -53,9 +53,9 @@ export const getComments = (article_id, sort_by, order) => {
     });
 };
 
-export const patchVotes = (comment_id, num) => {
+export const patchVotes = (type, id, num) => {
   return axios
-    .patch(`https://nc-be-database.herokuapp.com/api/comments/${comment_id}`, {
+    .patch(`https://nc-be-database.herokuapp.com/api/${type}/${id}`, {
       inc_votes: num
     })
     .then(({ data }) => {
@@ -90,6 +90,7 @@ export const patchArticle = (body, article_id) => {
     });
 };
 
+//No backend!
 export const deleteArticleById = article_id => {
   return axios.delete(
     `https://nc-be-database.herokuapp.com/api/articles/${article_id}`

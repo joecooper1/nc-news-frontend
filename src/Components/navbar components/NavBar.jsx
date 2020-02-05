@@ -1,6 +1,7 @@
 import React from "react";
 import Topics from "./Topics";
 import SearchBar from "./SearchBar";
+import { Nav } from "../../Styles/Navbar";
 import * as api from "../../api";
 
 class NavBar extends React.Component {
@@ -9,14 +10,19 @@ class NavBar extends React.Component {
   };
 
   render() {
-    return (
-      <nav>
+    let topics = "";
+    if (window.innerWidth > 600)
+      topics = (
         <Topics
           topics={this.state.topics}
           resetSearch={this.props.resetSearch}
         />
+      );
+    return (
+      <Nav window={window.innerWidth}>
+        {topics}
         <SearchBar doSearch={this.props.doSearch} />
-      </nav>
+      </Nav>
     );
   }
 

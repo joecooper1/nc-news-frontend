@@ -5,6 +5,10 @@ class SearchBar extends React.Component {
   state = { searchInput: "" };
 
   render() {
+    let inputWidth = "180px";
+    if (window.innerWidth < 600) {
+      inputWidth = "50vw";
+    }
     return (
       <SearchBarForm>
         <form onSubmit={this.handleSubmit}>
@@ -15,6 +19,7 @@ class SearchBar extends React.Component {
               placeholder="javascript"
               value={this.state.searchInput}
               onChange={this.handleChange}
+              style={{ width: inputWidth }}
             ></input>
           </label>
           <GoButton>Go!</GoButton>

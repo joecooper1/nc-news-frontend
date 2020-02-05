@@ -2,7 +2,6 @@ import React from "react";
 import {
   Line,
   CommentStyle,
-  CommentInfo,
   VoteCount,
   DeleteButton
 } from "../../../../Styles/Main";
@@ -33,21 +32,21 @@ class Comment extends React.Component {
 
     return (
       <CommentStyle>
-        <CommentInfo>
+        <aside>
           <p>
             <strong>{comment.author}</strong> &nbsp;
             <button
               disabled={this.state.disableVoting}
               onClick={() => this.handleClick(comment.comment_id, 1)}
             >
-              thumbs up
+              &#x1F44D;
             </button>{" "}
             &nbsp;{" "}
             <button
               disabled={this.state.disableVoting}
               onClick={() => this.handleClick(comment.comment_id, -1)}
             >
-              thumbs down
+              &#x1F44E;
             </button>{" "}
             &nbsp;{" "}
             <VoteCount voteCount={this.state.votes}>
@@ -58,7 +57,7 @@ class Comment extends React.Component {
             {comment.created_at.slice(11, 19)} on{" "}
             {comment.created_at.slice(0, 10)}
           </p>
-        </CommentInfo>{" "}
+        </aside>{" "}
         {comment.body} <br />
         {deleteOption}
         <Line></Line>

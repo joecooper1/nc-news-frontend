@@ -36,12 +36,22 @@ export const ArticleBody = styled.main`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  grid-area: 3/1/4/2;
-  margin: 20px;
   min-height: 400px;
-  background-color: lightskyblue;
+  background-color: white;
   padding: 10px;
   scroll-behaviour: smooth;
+  ${props =>
+    props.window < 600 &&
+    css`
+      grid-area: 3/2/4/3;
+      margin: 2px;
+    `};
+  ${props =>
+    props.window >= 600 &&
+    css`
+      grid-area: 3/1/4/2;
+      margin: 20px;
+    `};
 `;
 
 export const ArticleInfo = styled.aside`
@@ -78,17 +88,10 @@ export const CommentStyle = styled.li`
   flex-direction: column;
 `;
 
-export const CommentInfo = styled.aside`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 export const VoteCount = styled.span`
   color: red;
   ${props =>
-    props.voteCount > 0 &&
+    props.voteCount >= 0 &&
     css`
       color: green;
     `};
@@ -126,6 +129,17 @@ export const LoadingBar = styled.p`
   grid-area: 3/1/4/2;
   margin: 20px;
   min-height: 400px;
-  background-color: lightskyblue;
+  background-color: transparent;
   padding: 10px;
+`;
+
+export const VotingStyle = styled.div`
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const EmptyList = styled.p`
+  font-size: 30px;
 `;

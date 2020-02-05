@@ -13,6 +13,10 @@ class App extends React.Component {
   };
 
   render() {
+    let sideBar = <SideBar />;
+    if (window.innerWidth < 600) {
+      sideBar = "";
+    }
     return (
       <div className="App">
         <Header
@@ -22,7 +26,7 @@ class App extends React.Component {
         />
         <NavBar doSearch={this.doSearch} resetSearch={this.resetSearch} />
         <Main searchTerm={this.state.searchTerm} user={this.state.user} />
-        <SideBar />
+        {sideBar}
       </div>
     );
   }

@@ -3,7 +3,9 @@ import Prefs from "./Prefs";
 import {
   ArticlesDisplay,
   ArticleCard,
-  ArticleCardInfo
+  ArticleCardInfo,
+  LoadingBar,
+  EmptyList
 } from "../../Styles/Main";
 import * as api from "../../api";
 import { Link } from "@reach/router";
@@ -16,10 +18,22 @@ class ArticleList extends React.Component {
     limit: 10,
     page: 1,
     articles: [],
-    total_count: 0
+    total_count: 0,
+    isLoading: true
   };
 
   render() {
+    if (this.state.isLoading) {
+      return <LoadingBar>Loading...</LoadingBar>;
+    } else if (this.state.articles.length === 0) {
+      return (
+        <EmptyList>
+          Sorry, no articles were found <br /> matching your search. <br />
+          <br /> :(
+        </EmptyList>
+      );
+    }
+
     return (
       <main className="articleList">
         <Prefs
@@ -44,15 +58,9 @@ class ArticleList extends React.Component {
                   </p>
                   <p>by {article.author}</p>
                   <p>{article.created_at.slice(0, 10)}</p>
-                  <p>Votes: {article.votes}</p>
                   <p>Comments: {article.comment_count}</p>
+                  <p>Likes: {article.votes}</p>
                 </ArticleCardInfo>
-                {/* <ArticleCardInfo>{article.topic}</ArticleCardInfo>
-                <ArticleCardInfo>by {article.author}</ArticleCardInfo>
-                <p>
-                  {article.created_at.slice(0, 10)} {" "}
-                  
-                </p> */}
               </ArticleCard>
             );
           })}
@@ -120,7 +128,8 @@ class ArticleList extends React.Component {
       .then(({ articles, total_count }) => {
         this.setState({
           articles: articles,
-          total_count: Math.ceil(total_count / this.state.limit)
+          total_count: Math.ceil(total_count / this.state.limit),
+          isLoading: false
         });
       });
   }
@@ -135,9 +144,9 @@ class ArticleList extends React.Component {
       newState = { sort_by: "created_at", order: "asc" };
     if (target.value === "Date - new to old")
       newState = { sort_by: "created_at", order: "desc" };
-    if (target.value === "Votes - high to low")
+    if (target.value === "Likes - high to low")
       newState = { sort_by: "votes", order: "desc" };
-    if (target.value === "Votes - low to high")
+    if (target.value === "Likes - low to high")
       newState = { sort_by: "votes", order: "asc" };
     if (target.value === "Comments - most to least")
       newState = { sort_by: "comment_count", order: "desc" };

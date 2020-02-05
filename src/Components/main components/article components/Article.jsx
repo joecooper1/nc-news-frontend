@@ -3,6 +3,7 @@ import * as api from "../../../api";
 import Comments from "./comments components/Comments";
 import EditArticleOptions from "./EditArticleOptions";
 import ArticleTextVariable from "./ArticleTextVariable";
+import Voting from "./Voting";
 import {
   ArticleBody,
   ArticleInfo,
@@ -41,13 +42,13 @@ class Article extends React.Component {
     }
 
     return (
-      <ArticleBody>
+      <ArticleBody window={window.innerWidth}>
         <ArticleInfo>
           by {article.author} / posted: {article.created_at.slice(0, 10)}
         </ArticleInfo>
         <h2>{article.title}</h2>
         <ArticleInfo>
-          Votes: {article.votes} Comments: {article.comment_count}{" "}
+          Comments: {article.comment_count}{" "}
           <EditArticleOptions
             user={this.props.user}
             article={this.state.article}
@@ -62,6 +63,8 @@ class Article extends React.Component {
           commitChanges={this.commitChanges}
           cancelChanges={this.cancelChanges}
         />
+        <Line />
+        <Voting article={this.state.article} />
         <Line />
         <button onClick={this.showOrHideComments}>{commentBox}</button>
         {comments}

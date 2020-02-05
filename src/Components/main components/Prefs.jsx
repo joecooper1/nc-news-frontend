@@ -15,8 +15,8 @@ const Prefs = props => {
       <SelectSort onChange={props.changeSort}>
         <option>Date - new to old</option>
         <option>Date - old to new</option>
-        <option>Votes - high to low</option>
-        <option>Votes - low to high</option>
+        <option>Likes - high to low</option>
+        <option>Likes - low to high</option>
         <option>Comments - most to least</option>
         <option>Comments - least to most</option>
       </SelectSort>

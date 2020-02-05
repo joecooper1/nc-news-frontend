@@ -11,6 +11,8 @@ class Comments extends React.Component {
   };
 
   render() {
+    let disableSubmit = true;
+    if (this.state.commentInput.length > 0) disableSubmit = false;
     let typeNewComment = "";
     if (this.state.newComment) {
       typeNewComment = (
@@ -23,7 +25,7 @@ class Comments extends React.Component {
               style={{ width: "inherit", height: "inherit" }}
             ></textarea>
           </CommentInput>
-          <button>Submit</button>
+          <button disabled={disableSubmit}>Submit</button>
         </form>
       );
     }
@@ -58,7 +60,7 @@ class Comments extends React.Component {
   }
 
   vote(comment_id, num) {
-    api.patchVotes(comment_id, num).then(() => {});
+    api.patchVotes("comments", comment_id, num).then(() => {});
   }
 
   deleteComment = comment_id => {
