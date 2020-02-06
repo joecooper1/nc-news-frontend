@@ -244,11 +244,11 @@ export const ListHeader = styled.p`
 `;
 
 export const StarColor = styled.p`
-  color: black;
+  color: transparent;
+  text-shadow: 0 0 0 lightgrey;
   ${props =>
     props.favourited === true &&
     css`
-      color: yellow;
-      background-color: yellow;
+      text-shadow: 0 0 0 blue;
     `};
 `;

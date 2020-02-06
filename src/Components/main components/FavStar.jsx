@@ -8,18 +8,31 @@ class FavStar extends React.Component {
   };
 
   render() {
-    console.log(this.state.favourited);
     return (
       <StarColor favourited={this.state.favourited}>
         <button
-          style={{ backgroundColor: "inherit" }}
+          style={{ color: "inherit", textShadow: "inherit" }}
           className="star"
           onClick={this.handleClick}
         >
-          &#11088;
+          <span role="img" aria-label="un/favourite">
+            &#11088;
+          </span>
         </button>
       </StarColor>
     );
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.user !== this.props.user)
+      api.getFavourites(this.props.user).then(({ articles }) => {
+        this.setState({ favourited: false });
+        articles.map(article => {
+          if (article.article_id === this.props.article_id) {
+            return this.setState({ favourited: true });
+          }
+        });
+      });
   }
 
   componentDidMount() {
@@ -28,7 +41,7 @@ class FavStar extends React.Component {
       .then(({ articles }) => {
         articles.map(article => {
           if (article.article_id === this.props.article_id) {
-            this.setState({ favourited: true });
+            return this.setState({ favourited: true });
           }
         });
       })
