@@ -3,7 +3,8 @@ import * as api from "../../api";
 import {
   SmallArticleCard,
   ArticleCardInfo,
-  SmallArticleList
+  SmallArticleList,
+  ListHeader
 } from "../../Styles/Main";
 import { Link } from "@reach/router";
 
@@ -13,7 +14,7 @@ class ArticlesSmallDisplay extends React.Component {
   render() {
     return (
       <section>
-        <p>Articles by {this.props.user}</p>
+        <ListHeader>Articles by {this.props.user}</ListHeader>
         <SmallArticleList>
           {this.state.articles.map(article => {
             const articleLink = `/articles/${article.article_id}`;

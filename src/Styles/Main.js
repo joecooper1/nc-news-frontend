@@ -174,14 +174,15 @@ export const EmptyList = styled.p`
 `;
 
 export const UserProfileBody = styled.main`
-  background-color: pink;
-  padding: 10px;
+  background-color: rgb(22, 41, 85);
   scroll-behaviour: smooth;
+  color: white;
   ${props =>
     props.window < 600 &&
     css`
       grid-area: 3/2/4/3;
       margin: 2px;
+      padding: 10px;
     `};
   ${props =>
     props.window >= 600 &&
@@ -191,6 +192,7 @@ export const UserProfileBody = styled.main`
       min-height: 400px;
       grid-area: 3/1/4/2;
       margin: 20px;
+      padding: 40px;
     `};
 `;
 
@@ -227,9 +229,16 @@ export const ProfilePic = styled.img.attrs(props => ({
 `;
 
 export const SmallArticleList = styled.ul`
-  margin-top: 20px;
   background-color: white;
   padding: 0px 5px 0px 5px;
   height: 400px;
   overflow-y: scroll;
+  margin-top: -18px;
+`;
+
+export const ListHeader = styled.p`
+  font-size: 1.2em;
+  color: black;
+  background-color: rgb(120, 135, 171);
+  width: 100%;
 `;

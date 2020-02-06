@@ -81,3 +81,41 @@ a {
   overflow-y: visible;
   line-height: 2em;
 }
+
+.newTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.newTitleInput {
+  width: 500px;
+  height: 40px;
+  font-size: 2em;
+}
+
+.newBodyInput {
+  width: inherit;
+  font-family: inherit;
+  height: 100%;
+  overflow-y: visible;
+  line-height: 2em;
+  margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  .newTitle {
+    max-width: 90vw;
+  }
+
+  .newTitleInput {
+    width: 90vw;
+  }
+
+  .newBodyInput {
+    width: 93vw;
+    overflow-y: scroll;
+    height: 40vh;
+  }
+}

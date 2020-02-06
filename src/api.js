@@ -106,6 +106,20 @@ export const patchArticle = (body, article_id) => {
     });
 };
 
+export const postArticle = (title, body, topic, author) => {
+  console.log(title, body, topic, author);
+  return axios
+    .post("https://nc-be-database.herokuapp.com/api/articles", {
+      title: title,
+      body: body,
+      topic: topic.toLowerCase(),
+      author: author
+    })
+    .then(({ data }) => {
+      return data;
+    });
+};
+
 //No backend!
 export const deleteArticleById = article_id => {
   return axios.delete(

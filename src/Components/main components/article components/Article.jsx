@@ -4,7 +4,7 @@ import Comments from "./comments components/Comments";
 import EditArticleOptions from "./EditArticleOptions";
 import ArticleTextVariable from "./ArticleTextVariable";
 import Voting from "./Voting";
-import { Link } from "@reach/router";
+import { navigate, Link } from "@reach/router";
 import {
   ArticleBody,
   ArticleInfo,
@@ -113,7 +113,9 @@ class Article extends React.Component {
   removeArticle = event => {
     console.log("here");
     event.preventDefault();
-    api.deleteArticleById(this.state.article.article_id);
+    api.deleteArticleById(this.state.article.article_id).then(() => {
+      navigate("/");
+    });
   };
 }
 

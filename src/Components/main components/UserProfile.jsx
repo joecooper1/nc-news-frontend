@@ -23,7 +23,7 @@ class UserProfile extends React.Component {
           <h2>{user.name}</h2>
           <h3>aka {user.username}</h3>
         </Name>
-        <ArticlesSmallDisplay user={user.username} />
+        <ArticlesSmallDisplay user={user.name} />
       </UserProfileBody>
     );
   }
