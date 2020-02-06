@@ -1,6 +1,14 @@
 import axios from "axios";
 
-export const getAllArticles = (limit, sort_by, order, page, topic, title) => {
+export const getAllArticles = (
+  limit,
+  sort_by,
+  order,
+  page,
+  topic,
+  title,
+  author
+) => {
   return axios
     .get("https://nc-be-database.herokuapp.com/api/articles", {
       params: {
@@ -9,7 +17,8 @@ export const getAllArticles = (limit, sort_by, order, page, topic, title) => {
         order: order,
         p: page,
         topic: topic,
-        title: title
+        title: title,
+        author: author
       }
     })
     .then(({ data }) => {
@@ -28,6 +37,14 @@ export const getTopics = () => {
 export const getUsers = () => {
   return axios
     .get("https://nc-be-database.herokuapp.com/api/users")
+    .then(({ data }) => {
+      return data;
+    });
+};
+
+export const getUser = username => {
+  return axios
+    .get(`https://nc-be-database.herokuapp.com/api/users/${username}`)
     .then(({ data }) => {
       return data;
     });

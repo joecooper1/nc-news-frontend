@@ -4,6 +4,7 @@ import Comments from "./comments components/Comments";
 import EditArticleOptions from "./EditArticleOptions";
 import ArticleTextVariable from "./ArticleTextVariable";
 import Voting from "./Voting";
+import { Link } from "@reach/router";
 import {
   ArticleBody,
   ArticleInfo,
@@ -21,6 +22,7 @@ class Article extends React.Component {
 
   render() {
     const { article } = this.state;
+    const userLink = `/users/${article.author}`;
 
     let commentBox = "";
     let comments = "";
@@ -44,7 +46,8 @@ class Article extends React.Component {
     return (
       <ArticleBody window={window.innerWidth}>
         <ArticleInfo>
-          by {article.author} / posted: {article.created_at.slice(0, 10)}
+          by <Link to={userLink}>{article.author}</Link> / posted:{" "}
+          {article.created_at.slice(0, 10)}
         </ArticleInfo>
         <h2>{article.title}</h2>
         <ArticleInfo>

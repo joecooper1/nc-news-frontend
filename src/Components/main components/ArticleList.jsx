@@ -47,6 +47,7 @@ class ArticleList extends React.Component {
           {this.state.articles.map(article => {
             const articleLink = `/articles/${article.article_id}`;
             const topicLink = `/${article.topic}`;
+            const userLink = `/users/${article.author}`;
             return (
               <ArticleCard key={article.article_id} window={window.innerWidth}>
                 <h3>
@@ -56,7 +57,9 @@ class ArticleList extends React.Component {
                   <p>
                     in <Link to={topicLink}>{article.topic}</Link>
                   </p>
-                  <p>by {article.author}</p>
+                  <p>
+                    by <Link to={userLink}>{article.author}</Link>
+                  </p>
                   <p>{article.created_at.slice(0, 10)}</p>
                   <p>Comments: {article.comment_count}</p>
                   <p>Likes: {article.votes}</p>

@@ -63,6 +63,19 @@ export const ArticleCard = styled.li.attrs(props => ({ key: props.key }))`
     `};
 `;
 
+export const SmallArticleCard = styled.li.attrs(props => ({ key: props.key }))`
+  padding: 0px;
+  text-align: left;
+  margin: 0px 0px 0 0;
+  list-style-type: none;
+  border-bottom: 1px solid black;
+  ${props =>
+    props.window < 600 &&
+    css`
+      margin: 0px;
+    `};
+`;
+
 export const ArticleInfo = styled.aside`
   color: grey;
 `;
@@ -158,4 +171,65 @@ export const VotingStyle = styled.div`
 
 export const EmptyList = styled.p`
   font-size: 30px;
+`;
+
+export const UserProfileBody = styled.main`
+  background-color: pink;
+  padding: 10px;
+  scroll-behaviour: smooth;
+  ${props =>
+    props.window < 600 &&
+    css`
+      grid-area: 3/2/4/3;
+      margin: 2px;
+    `};
+  ${props =>
+    props.window >= 600 &&
+    css`
+      display: grid;
+      grid-template: 200px 1fr / 1fr 1fr;
+      min-height: 400px;
+      grid-area: 3/1/4/2;
+      margin: 20px;
+    `};
+`;
+
+export const Name = styled.div`
+  grid-area: 1/1/2/2;
+  text-align: center;
+  font-size: 1.5em;
+  line-heigth: 0px;
+`;
+
+export const ProfilePic = styled.img.attrs(props => ({
+  src: props.src,
+  alt: props.alt
+}))`
+  grid-area: 1/2/2/3;
+  border-radius: 50%;
+  border: 1px black solid;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  align-text: center;
+  ${props =>
+    props.window < 600 &&
+    css`
+      height: 100px;
+      width: 100px;
+    `};
+  ${props =>
+    props.window >= 600 &&
+    css`
+      height: 200px;
+      width: 200px;
+    `};
+`;
+
+export const SmallArticleList = styled.ul`
+  margin-top: 20px;
+  background-color: white;
+  padding: 0px 5px 0px 5px;
+  height: 400px;
+  overflow-y: scroll;
 `;

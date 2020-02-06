@@ -41,7 +41,7 @@ const Prefs = props => {
     </label>
   );
 
-  let totalPages = <scan>of {props.total_count}</scan>;
+  let totalPages = <span>of {props.total_count}</span>;
   if (window.innerWidth < 600) totalPages = "";
 
   const pageSelector = (
