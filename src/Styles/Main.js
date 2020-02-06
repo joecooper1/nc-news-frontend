@@ -242,3 +242,13 @@ export const ListHeader = styled.p`
   background-color: rgb(120, 135, 171);
   width: 100%;
 `;
+
+export const StarColor = styled.p`
+  color: black;
+  ${props =>
+    props.favourited === true &&
+    css`
+      color: yellow;
+      background-color: yellow;
+    `};
+`;

@@ -9,6 +9,7 @@ import {
 } from "../../Styles/Main";
 import * as api from "../../api";
 import { Link } from "@reach/router";
+import FavStar from "./FavStar";
 
 class ArticleList extends React.Component {
   state = {
@@ -63,6 +64,10 @@ class ArticleList extends React.Component {
                   <p>{article.created_at.slice(0, 10)}</p>
                   <p>Comments: {article.comment_count}</p>
                   <p>Likes: {article.votes}</p>
+                  <FavStar
+                    user={this.props.user}
+                    article_id={article.article_id}
+                  />
                 </ArticleCardInfo>
               </ArticleCard>
             );

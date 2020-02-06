@@ -107,7 +107,6 @@ export const patchArticle = (body, article_id) => {
 };
 
 export const postArticle = (title, body, topic, author) => {
-  console.log(title, body, topic, author);
   return axios
     .post("https://nc-be-database.herokuapp.com/api/articles", {
       title: title,
@@ -120,7 +119,22 @@ export const postArticle = (title, body, topic, author) => {
     });
 };
 
-//No backend!
+export const getFavourites = username => {
+  return axios
+    .get(
+      `https://nc-be-database.herokuapp.com/api/users/${username}/favourites`
+    )
+    .then(({ data }) => {
+      return data;
+    });
+};
+
+export const postFavourite = (username, article_id) => {
+  return axios.post(
+    `https://nc-be-database.herokuapp.com/api/users/${username}/favourites/${article_id}`
+  );
+};
+
 export const deleteArticleById = article_id => {
   return axios.delete(
     `https://nc-be-database.herokuapp.com/api/articles/${article_id}`
