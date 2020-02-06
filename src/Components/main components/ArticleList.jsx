@@ -48,11 +48,11 @@ class ArticleList extends React.Component {
             const articleLink = `/articles/${article.article_id}`;
             const topicLink = `/${article.topic}`;
             return (
-              <ArticleCard key={article.article_id}>
+              <ArticleCard key={article.article_id} window={window.innerWidth}>
                 <h3>
                   <Link to={articleLink}>{article.title}</Link>
                 </h3>{" "}
-                <ArticleCardInfo>
+                <ArticleCardInfo window={window.innerWidth}>
                   <p>
                     in <Link to={topicLink}>{article.topic}</Link>
                   </p>
@@ -70,8 +70,6 @@ class ArticleList extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("up");
-
     if (
       this.state.limit !== prevState.limit ||
       this.state.sort_by !== prevState.sort_by ||
@@ -94,6 +92,9 @@ class ArticleList extends React.Component {
             total_count: Math.ceil(total_count / this.state.limit),
             page: 1
           });
+        })
+        .catch(() => {
+          this.setState({ articles: [] });
         });
 
     if (this.state.page !== prevState.page)
@@ -111,11 +112,13 @@ class ArticleList extends React.Component {
             articles: articles,
             total_count: Math.ceil(total_count / this.state.limit)
           });
+        })
+        .catch(() => {
+          this.setState({ articles: [] });
         });
   }
 
   componentDidMount() {
-    console.log("mount");
     api
       .getAllArticles(
         this.state.limit,

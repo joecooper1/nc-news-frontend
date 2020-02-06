@@ -5,31 +5,17 @@ export const ArticleListPrefs = styled.div`
   flex-direction: row;
   padding: 1px 10px 1px 10px;
   justify-content: space-between;
-  background-color: green;
+  background-color: rgb(46, 66, 114);
   align-items: center;
+  ${props =>
+    props.window < 600 &&
+    css`
+      padding: 1px 1px 1px 1px;
+    `};
 `;
 
 export const SelectSort = styled.select`
-  margin-left: 20px;
-`;
-
-export const ArticlesDisplay = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  align-items: stretch;
-  justify-content: flex-start;
-  max-height: 100vh;
-  overflow-y: scroll;
-`;
-
-export const ArticleCard = styled.li.attrs(props => ({ key: props.key }))`
-  background-color: white;
-  padding: 0px 10px 0px 10px;
-  text-align: left;
-  margin: 0px 20px 0 0;
-  list-style-type: none;
-  border-bottom: 1px solid black;
+  margin-left: 5px;
 `;
 
 export const ArticleBody = styled.main`
@@ -51,6 +37,29 @@ export const ArticleBody = styled.main`
     css`
       grid-area: 3/1/4/2;
       margin: 20px;
+    `};
+`;
+
+export const ArticlesDisplay = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: stretch;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  padding: 0px;
+`;
+
+export const ArticleCard = styled.li.attrs(props => ({ key: props.key }))`
+  padding: 0px 10px 0px 10px;
+  text-align: left;
+  margin: 0px 20px 0 0;
+  list-style-type: none;
+  border-bottom: 1px solid black;
+  ${props =>
+    props.window < 600 &&
+    css`
+      margin: 0px;
     `};
 `;
 
@@ -116,6 +125,13 @@ export const ArticleCardInfo = styled.span`
   justify-content: space-between;
   margin-top: -10px;
   width: 60%;
+  ${props =>
+    props.window < 600 &&
+    css`
+      flex-wrap: wrap;
+      line-height: 0px;
+      width: 90vw;
+    `};
 `;
 
 export const EditBox = styled.span`

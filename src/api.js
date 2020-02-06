@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const getAllArticles = (limit, sort_by, order, page, topic, title) => {
-  console.log("hi", title);
   return axios
     .get("https://nc-be-database.herokuapp.com/api/articles", {
       params: {

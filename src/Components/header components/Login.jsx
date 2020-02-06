@@ -6,7 +6,7 @@ class Login extends React.Component {
   state = { users: [] };
 
   render() {
-    let loggedInAs = "loggedInAs";
+    let loggedInAs = "logged in as";
     if (window.innerWidth < 600) loggedInAs = "";
     return (
       <LogInBar window={window.innerWidth}>

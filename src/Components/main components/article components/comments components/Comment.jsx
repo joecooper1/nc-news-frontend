@@ -39,14 +39,18 @@ class Comment extends React.Component {
               disabled={this.state.disableVoting}
               onClick={() => this.handleClick(comment.comment_id, 1)}
             >
-              &#x1F44D;
+              <span role="img" aria-label="thumbs up">
+                &#x1F44D;
+              </span>
             </button>{" "}
             &nbsp;{" "}
             <button
               disabled={this.state.disableVoting}
               onClick={() => this.handleClick(comment.comment_id, -1)}
             >
-              &#x1F44E;
+              <span role="img" aria-label="thumbs up">
+                &#x1F44E;
+              </span>
             </button>{" "}
             &nbsp;{" "}
             <VoteCount voteCount={this.state.votes}>
