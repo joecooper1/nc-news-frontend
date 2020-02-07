@@ -12,10 +12,7 @@ class SideBar extends React.Component {
         <Link to="/new">
           <NewArticleButton>Write new</NewArticleButton>
         </Link>
-        <div>
-          Trending Right Now
-          <TopArticles />
-        </div>
+        <TopArticles />
       </div>
     );
   }

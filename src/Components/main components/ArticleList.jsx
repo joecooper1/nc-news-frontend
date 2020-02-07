@@ -55,10 +55,16 @@ class ArticleList extends React.Component {
                 </h3>{" "}
                 <ArticleCardInfo window={window.innerWidth}>
                   <p>
-                    in <Link to={topicLink}>{article.topic}</Link>
+                    in{" "}
+                    <span className="bold">
+                      <Link to={topicLink}>{article.topic}</Link>
+                    </span>
                   </p>
                   <p>
-                    by <Link to={userLink}>{article.author}</Link>
+                    by{" "}
+                    <span className="bold">
+                      <Link to={userLink}>{article.author}</Link>
+                    </span>
                   </p>
                   <p>{article.created_at.slice(0, 10)}</p>
                   <p>Comments: {article.comment_count}</p>

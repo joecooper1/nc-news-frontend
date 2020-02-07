@@ -4,7 +4,8 @@ export const NewArticleButton = styled.button`
   width: 300px;
   margin: 30px 30px 60px 30px;
   height: 40px;
-  background-color: rgb(6, 21, 57);
+  // background-color: rgb(6, 21, 57);
+  background-color: black;
   color: white;
   border-color: transparent;
   border-radius: 20px;
@@ -45,6 +46,11 @@ export const SidebarArticleList = styled.ul`
   list-style-type: none;
   padding: 0px;
   border: 1px black solid;
+  ${props =>
+    props.type === "user" &&
+    css`
+      height: 205px;
+    `}
 `;
 
 export const LittleArticleCard = styled.li.attrs(props => ({
@@ -57,4 +63,16 @@ export const LittleArticleCard = styled.li.attrs(props => ({
   text-align: left;
   border-bottom: 1px solid black;
   text-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  ${props =>
+    props.type === "user" &&
+    css`
+      height: 30px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    `}
 `;
