@@ -9,12 +9,14 @@ class App extends React.Component {
   state = {
     searchTerm: "",
     user: "grumpy19",
-    isLoading: true
+    isLoading: true,
+    window: window.innerWidth
   };
 
   render() {
+    window.addEventListener("resize", this.handleResize);
     let sideBar = <SideBar />;
-    if (window.innerWidth < 600) {
+    if (window.innerWidth < 980) {
       sideBar = "";
     }
     return (
@@ -30,6 +32,10 @@ class App extends React.Component {
       </div>
     );
   }
+
+  handleResize = () => {
+    this.setState({ window: window.innerWidth });
+  };
 
   doSearch = input => {
     this.setState({ searchTerm: input });

@@ -28,13 +28,13 @@ export const ArticleBody = styled.main`
   padding: 10px;
   scroll-behaviour: smooth;
   ${props =>
-    props.window < 600 &&
+    props.window < 980 &&
     css`
       grid-area: 3/2/4/3;
       margin: 2px;
     `};
   ${props =>
-    props.window >= 600 &&
+    props.window >= 980 &&
     css`
       grid-area: 3/1/4/2;
       margin: 20px;
@@ -248,6 +248,7 @@ export const SmallArticleList = styled.ul`
   height: 400px;
   overflow-y: scroll;
   margin-top: -18px;
+  color: black;
 `;
 
 export const ListHeader = styled.p`

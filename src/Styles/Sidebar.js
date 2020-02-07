@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
 export const NewArticleButton = styled.button`
-  width: 80%;
-  margin: 20px;
+  width: 300px;
+  margin: 30px 30px 60px 30px;
   height: 40px;
   background-color: rgb(6, 21, 57);
   color: white;
@@ -35,4 +35,26 @@ export const NewArticleBody = styled.main`
       margin: 20px;
       padding: 40px;
     `};
+`;
+
+export const SidebarArticleList = styled.ul`
+  width: 350px;
+  height: 355px;
+  margin: 5px;
+  background-color: transparent;
+  list-style-type: none;
+  padding: 0px;
+  border: 1px black solid;
+`;
+
+export const LittleArticleCard = styled.li.attrs(props => ({
+  key: props.key
+}))`
+  width: 340px;
+  height: 60px;
+  background-color: transparent;
+  padding: 5px;
+  text-align: left;
+  border-bottom: 1px solid black;
+  text-wrap: wrap;
 `;

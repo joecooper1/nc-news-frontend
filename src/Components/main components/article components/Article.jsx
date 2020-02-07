@@ -10,7 +10,8 @@ import {
   ArticleBody,
   ArticleInfo,
   Line,
-  LoadingBar
+  LoadingBar,
+  EmptyList
 } from "../../../Styles/Main";
 
 class Article extends React.Component {
@@ -42,6 +43,13 @@ class Article extends React.Component {
 
     if (this.state.isLoading) {
       return <LoadingBar>Loading...</LoadingBar>;
+    } else if (article.created_at === "") {
+      return (
+        <EmptyList>
+          Sorry, no article was found <br /> matching your search. <br />
+          <br /> :(
+        </EmptyList>
+      );
     }
 
     return (
@@ -80,12 +88,17 @@ class Article extends React.Component {
   }
 
   componentDidMount() {
-    api.getArticle(this.props.uri).then(({ article }) => {
-      this.setState({
-        article: article,
-        isLoading: false
+    api
+      .getArticle(this.props.uri)
+      .then(({ article }) => {
+        this.setState({
+          article: article,
+          isLoading: false
+        });
+      })
+      .catch(() => {
+        this.setState({ isLoading: false });
       });
-    });
   }
 
   showOrHideComments = () => {

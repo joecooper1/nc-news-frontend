@@ -19,7 +19,11 @@ class FavStar extends React.Component {
           className="star"
           onClick={this.handleClick}
         >
-          <span role="img" aria-label="un/favourite">
+          <span
+            role="img"
+            aria-label="un/favourite"
+            className={this.state.animate}
+          >
             &#11088;
           </span>
         </button>
@@ -53,14 +57,25 @@ class FavStar extends React.Component {
   }
 
   handleClick = () => {
+    this.setState(currentState => {
+      return {
+        favourited: !currentState.favourited
+      };
+    });
+    this.favourite();
+  };
+
+  favourite = () => {
     api
       .postFavourite(this.props.user, this.props.article_id)
-      .then(() => {
+      .then(() => {})
+      .catch(() => {
         this.setState(currentState => {
-          return { favourited: !currentState.favourited };
+          return {
+            favourited: !currentState.favourited
+          };
         });
-      })
-      .catch(() => console.log("no post"));
+      });
   };
 }
 

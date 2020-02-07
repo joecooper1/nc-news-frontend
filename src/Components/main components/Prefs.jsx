@@ -8,13 +8,6 @@ const Prefs = props => {
     pages.push(i);
   }
 
-  const viewToggle = (
-    <div>
-      <button>squares</button>
-      <button>list</button>
-    </div>
-  );
-
   const selectSort = (
     <SelectSort onChange={props.changeSort}>
       <option>Date - new to old</option>

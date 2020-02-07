@@ -13,7 +13,6 @@ import FavStar from "./FavStar";
 
 class ArticleList extends React.Component {
   state = {
-    view: "normal",
     sort_by: "created_at",
     order: "desc",
     limit: 10,
@@ -78,19 +77,22 @@ class ArticleList extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    let pageCheck = 1;
+    if (this.state.page !== prevState.page) pageCheck = this.state.page;
     if (
       this.state.limit !== prevState.limit ||
       this.state.sort_by !== prevState.sort_by ||
       this.state.order !== prevState.order ||
       this.props.topic !== prevProps.topic ||
-      this.props.searchTerm !== prevProps.searchTerm
+      this.props.searchTerm !== prevProps.searchTerm ||
+      this.state.page !== prevState.page
     )
       api
         .getAllArticles(
           this.state.limit,
           this.state.sort_by,
           this.state.order,
-          1,
+          pageCheck,
           this.props.topic.toLowerCase(),
           this.props.searchTerm
         )
@@ -98,27 +100,7 @@ class ArticleList extends React.Component {
           this.setState({
             articles: articles,
             total_count: Math.ceil(total_count / this.state.limit),
-            page: 1
-          });
-        })
-        .catch(() => {
-          this.setState({ articles: [] });
-        });
-
-    if (this.state.page !== prevState.page)
-      api
-        .getAllArticles(
-          this.state.limit,
-          this.state.sort_by,
-          this.state.order,
-          this.state.page,
-          this.props.topic.toLowerCase(),
-          this.props.searchTerm
-        )
-        .then(({ articles, total_count }) => {
-          this.setState({
-            articles: articles,
-            total_count: Math.ceil(total_count / this.state.limit)
+            page: pageCheck
           });
         })
         .catch(() => {

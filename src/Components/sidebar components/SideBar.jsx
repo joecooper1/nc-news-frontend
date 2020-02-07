@@ -1,6 +1,7 @@
 import React from "react";
 import { NewArticleButton } from "../../Styles/Sidebar";
 import { Link } from "@reach/router";
+import TopArticles from "./TopArticles";
 
 class SideBar extends React.Component {
   state = {};
@@ -11,6 +12,10 @@ class SideBar extends React.Component {
         <Link to="/new">
           <NewArticleButton>Write new</NewArticleButton>
         </Link>
+        <div>
+          Trending Right Now
+          <TopArticles />
+        </div>
       </div>
     );
   }
