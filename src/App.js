@@ -4,6 +4,7 @@ import Header from "./Components/header components/Header";
 import NavBar from "./Components/navbar components/NavBar";
 import Main from "./Components/main components/Main";
 import SideBar from "./Components/sidebar components/SideBar";
+import Background from "./Components/Background";
 
 class App extends React.Component {
   state = {
@@ -21,6 +22,7 @@ class App extends React.Component {
     }
     return (
       <div className="App">
+        <Background />
         <Header
           resetSearch={this.resetSearch}
           user={this.state.user}

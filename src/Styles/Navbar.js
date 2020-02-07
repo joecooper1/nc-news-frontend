@@ -5,7 +5,7 @@ export const TopicList = styled.ul`
   display: flex;
   flex-direction: row;
   width: 40vw;
-  background-color: rgb(79, 98, 142);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const TopicItem = styled.li.attrs(props => ({ key: props.key }))`
@@ -19,7 +19,8 @@ export const SearchBarForm = styled.div`
 `;
 
 export const GoButton = styled.button`
-  background-color: rgb(22, 41, 85);
+  // background-color: rgb(22, 41, 85);
+  background-color: black;
   border-color: transparent;
   height: 50px;
   width: 50px;
@@ -28,7 +29,7 @@ export const GoButton = styled.button`
 `;
 
 export const Nav = styled.nav`
-  background-color: rgb(120, 135, 171);
+  // background-color: rgb(120, 135, 171);
   display: flex;
   align-items: center;
   padding: 2px;

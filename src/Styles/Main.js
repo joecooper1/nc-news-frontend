@@ -5,7 +5,8 @@ export const ArticleListPrefs = styled.div`
   flex-direction: row;
   padding: 1px 10px 1px 10px;
   justify-content: space-between;
-  background-color: rgb(46, 66, 114);
+  // background-color: rgb(46, 66, 114);
+  background-color: black;
   align-items: center;
   color: white;
   ${props =>
@@ -24,7 +25,7 @@ export const ArticleBody = styled.main`
   flex-direction: column;
   align-items: flex-start;
   min-height: 400px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.95);
   padding: 10px;
   scroll-behaviour: smooth;
   ${props =>
@@ -135,7 +136,7 @@ export const VoteCount = styled.span`
 export const DeleteButton = styled.div`
   color: red;
   border-color: transparent;
-  background-color: white;
+  background-color: transparent;
   text-align: right;
 `;
 
@@ -188,9 +189,11 @@ export const EmptyList = styled.p`
 `;
 
 export const UserProfileBody = styled.main`
-  background-color: rgb(22, 41, 85);
+  // background-color: rgb(22, 41, 85);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
   scroll-behaviour: smooth;
-  color: white;
+  color: black;
   ${props =>
     props.window < 600 &&
     css`
@@ -261,10 +264,10 @@ export const ListHeader = styled.p`
 export const StarColor = styled.p`
   color: transparent;
   text-shadow: 0 0 0 lightgrey;
-  background-color: white;
+  background-color: transparent;
   ${props =>
     props.favourited === true &&
     css`
-      text-shadow: 0 0 0 blue;
+      text-shadow: 0 0 0 orange;
     `};
 `;

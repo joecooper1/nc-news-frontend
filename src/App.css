@@ -2,7 +2,8 @@
   height: 100%;
   width: 100vw;
   text-align: center;
-  background-color: beige;
+  /* background-color: beige; */
+  background-color: transparent;
   margin-top: 0;
   display: grid;
   grid-template: 10vh 10vh 100% / 7fr 3fr;
@@ -21,7 +22,8 @@ header {
   padding-left: 30px;
   padding-right: 30px;
   align-items: center;
-  background-color: rgb(6, 21, 71);
+  /* background-color: rgb(6, 21, 71); */
+  background-image: linear-gradient(black, transparent);
   grid-area: 1/1/2/3;
   color: white;
 }
@@ -30,6 +32,23 @@ header {
   header {
     padding-left: 10px;
     padding-right: 10px;
+  }
+}
+
+.searchBar {
+  width: 90px;
+  transition: width 1s;
+}
+
+.searchBar:hover,
+.searchBar:focus {
+  width: 180px;
+}
+
+@media only screen and (max-width: 600px) {
+  .searchBar {
+    width: 50vw;
+    transition: width 0s;
   }
 }
 
@@ -49,12 +68,14 @@ header {
 
 .sidebar {
   grid-area: 3/2/4/3;
-  background-color: rgb(120, 135, 171);
+  /* background-color: rgb(120, 135, 171); */
+  background-color: rgba(255, 255, 255, 0.8);
   margin: 20px 20px 20px 0px;
   min-height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 10px;
 }
 
 a {
@@ -132,7 +153,7 @@ a {
   text-shadow: 0 0 0 rgb(22, 41, 85);
 }
 
-@-moz-keyframes spin {
+/* @-moz-keyframes spin {
   from {
     -moz-transform: rotate(0deg);
   }
@@ -178,4 +199,48 @@ a {
   -ms-animation-iteration-count: infinite;
   -ms-animation-timing-function: linear;
   -o-transition: rotate(3600deg);
+} */
+
+/* background shit */
+
+@keyframes colorChange {
+  0% {
+    filter: invert(10%);
+  }
+  50% {
+    filter: invert(30%);
+  }
+  100% {
+    filter: invert(10%);
+  }
+}
+
+@keyframes colorChange2 {
+  0% {
+    filter: invert(30%);
+  }
+  50% {
+    filter: invert(10%);
+  }
+  100% {
+    filter: invert(30%);
+  }
+}
+
+#background {
+  height: 150vw;
+  width: 150vw;
+  display: grid;
+  /* grid-template: repeat(4, 57.5px 115px) / repeat(12, 211px); */
+  grid-template: repeat(6, 64px 128px) / repeat(12, 219px);
+  grid-gap: 0px;
+  z-index: -1000;
+  margin-top: -20%;
+  margin-left: -20%;
+  position: fixed;
+}
+
+.hex {
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
+    2px 2px 0 #000;
 }

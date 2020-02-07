@@ -21,7 +21,7 @@ export const UserDropDown = styled.select.attrs(props => ({
   value: props.user,
   onChange: props.onChange
 }))`
-  background-color: rgb(22, 41, 85);
+  background-color: rgba(0, 0, 0, 0.5);
   border-color: transparent;
   -moz-appearance: none;
   -webkit-appearance: none;
