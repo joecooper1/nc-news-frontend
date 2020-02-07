@@ -65,7 +65,6 @@ const Prefs = props => {
     );
   return (
     <ArticleListPrefs>
-      {viewToggle}
       {selectSort}
       {viewNumber}
       {pageSelector}

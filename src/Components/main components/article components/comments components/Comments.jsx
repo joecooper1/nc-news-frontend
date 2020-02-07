@@ -31,7 +31,7 @@ class Comments extends React.Component {
     }
 
     return (
-      <CommentsDisplay>
+      <CommentsDisplay window={window.innerWidth}>
         <button id="addButton" onClick={this.addCommentToggle}>
           +
         </button>

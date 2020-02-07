@@ -14,6 +14,7 @@ const Topics = ({ topics, resetSearch }) => {
               key={topicLink}
               className="topic"
               onClick={resetSearch}
+              style={{ color: "inherit" }}
             >
               {topic}
             </Link>

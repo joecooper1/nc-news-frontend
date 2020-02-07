@@ -123,3 +123,8 @@ a {
 .star {
   border-color: transparent;
 }
+
+.thumbs {
+  color: transparent;
+  text-shadow: 0 0 0 rgb(22, 41, 85);
+}

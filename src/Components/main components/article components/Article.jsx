@@ -4,6 +4,7 @@ import Comments from "./comments components/Comments";
 import EditArticleOptions from "./EditArticleOptions";
 import ArticleTextVariable from "./ArticleTextVariable";
 import Voting from "./Voting";
+import FavStar from "../FavStar";
 import { navigate, Link } from "@reach/router";
 import {
   ArticleBody,
@@ -50,8 +51,11 @@ class Article extends React.Component {
           {article.created_at.slice(0, 10)}
         </ArticleInfo>
         <h2>{article.title}</h2>
+        <span>
+          <FavStar user={this.props.user} article_id={article.article_id} />
+        </span>
         <ArticleInfo>
-          Comments: {article.comment_count}{" "}
+          Comments: {article.comment_count} &nbsp;{" "}
           <EditArticleOptions
             user={this.props.user}
             article={this.state.article}
@@ -115,6 +119,7 @@ class Article extends React.Component {
     event.preventDefault();
     api.deleteArticleById(this.state.article.article_id).then(() => {
       navigate("/");
+      console.log("woop");
     });
   };
 }

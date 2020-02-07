@@ -11,7 +11,11 @@ class FavStar extends React.Component {
     return (
       <StarColor favourited={this.state.favourited}>
         <button
-          style={{ color: "inherit", textShadow: "inherit" }}
+          style={{
+            color: "inherit",
+            textShadow: "inherit",
+            backgroundColor: "inherit"
+          }}
           className="star"
           onClick={this.handleClick}
         >

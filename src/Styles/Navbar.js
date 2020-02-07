@@ -10,7 +10,7 @@ export const TopicList = styled.ul`
 
 export const TopicItem = styled.li.attrs(props => ({ key: props.key }))`
   padding: 10px;
-  color: black;
+  color: white;
 `;
 
 export const SearchBarForm = styled.div`

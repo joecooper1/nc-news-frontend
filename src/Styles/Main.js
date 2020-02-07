@@ -7,6 +7,7 @@ export const ArticleListPrefs = styled.div`
   justify-content: space-between;
   background-color: rgb(46, 66, 114);
   align-items: center;
+  color: white;
   ${props =>
     props.window < 600 &&
     css`
@@ -100,6 +101,18 @@ export const CommentsDisplay = styled.ul`
   justify-content: left;
   background-color: white;
   padding-right: 20px;
+  ${props =>
+    props.window < 600 &&
+    css`
+      width: 85%;
+      margin-left: -5%;
+    `};
+  ${props =>
+    props.window >= 600 &&
+    css`
+      width: 90%;
+      margin: 0%;
+    `};
 `;
 
 export const CommentStyle = styled.li`
@@ -132,12 +145,13 @@ export const CommentInput = styled.div`
 `;
 
 export const ArticleCardInfo = styled.span`
-  color: grey;
+  color: hsl(0, 0, 80%);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-top: -10px;
-  width: 60%;
+  width: 90%;
+  flex-wrap: wrap;
   ${props =>
     props.window < 600 &&
     css`
@@ -246,6 +260,7 @@ export const ListHeader = styled.p`
 export const StarColor = styled.p`
   color: transparent;
   text-shadow: 0 0 0 lightgrey;
+  background-color: white;
   ${props =>
     props.favourited === true &&
     css`
