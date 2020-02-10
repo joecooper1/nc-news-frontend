@@ -4,13 +4,16 @@ export const TopicList = styled.ul`
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  width: 40vw;
+  width: 20vw;
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const TopicItem = styled.li.attrs(props => ({ key: props.key }))`
   padding: 10px;
   color: white;
+  &:hover {
+    background-color: black;
+  }
 `;
 
 export const SearchBarForm = styled.div`
