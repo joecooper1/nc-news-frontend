@@ -3,6 +3,8 @@ import Topics from "./Topics";
 import SearchBar from "./SearchBar";
 import { Nav } from "../../Styles/Navbar";
 import * as api from "../../api";
+import { NewArticleButton } from "../../Styles/Sidebar";
+import { Link } from "@reach/router";
 
 class NavBar extends React.Component {
   state = {
@@ -11,16 +13,27 @@ class NavBar extends React.Component {
 
   render() {
     let topics = "";
-    if (window.innerWidth > 600)
+    let newButton = "";
+    if (window.innerWidth >= 600) {
       topics = (
         <Topics
           topics={this.state.topics}
           resetSearch={this.props.resetSearch}
         />
       );
+    } else {
+      newButton = (
+        <Link to="/new">
+          <NewArticleButton window={window.innerWidth}>
+            &#x270E;
+          </NewArticleButton>
+        </Link>
+      );
+    }
     return (
       <Nav window={window.innerWidth}>
         {topics}
+        {newButton}
         <SearchBar doSearch={this.props.doSearch} />
       </Nav>
     );

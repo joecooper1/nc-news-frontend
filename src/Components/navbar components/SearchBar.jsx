@@ -6,20 +6,24 @@ class SearchBar extends React.Component {
 
   render() {
     let inputWidth = "90px";
+    let placeHolder = "javascript";
+    let search = "Search";
     if (window.innerWidth < 600) {
-      inputWidth = "50vw";
+      inputWidth = "40vw";
+      placeHolder = "search";
+      search = "";
     }
     return (
       <SearchBarForm>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Search{" "}
+            {search}{" "}
             <input
               type="text"
-              placeholder="javascript"
+              placeholder={placeHolder}
               value={this.state.searchInput}
               onChange={this.handleChange}
-              // style={{ width: inputWidth, transition: "width 1s" }}
+              style={{ width: inputWidth, transition: "width 1s" }}
               className="searchBar"
             ></input>
           </label>

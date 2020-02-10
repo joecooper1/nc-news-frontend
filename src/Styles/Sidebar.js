@@ -9,12 +9,21 @@ export const NewArticleButton = styled.button`
   color: white;
   border-color: transparent;
   border-radius: 20px;
+  ${props =>
+    props.window < 600 &&
+    css`
+      height: 50px;
+      width: 50px;
+      margin: 0px 20px 0px 0px;
+      border-radius: 100px;
+      font-size: 1.4em;
+    `};
 `;
 
 export const NewArticleBody = styled.main`
-  background-color: rgb(22, 41, 85);
+  background-color: rgba(255, 255, 255, 0.95);
   color: white;
-  height: 110%;
+  height: 150%;
   ${props =>
     props.window < 600 &&
     css`
@@ -31,7 +40,7 @@ export const NewArticleBody = styled.main`
     css`
       display: grid;
       grid-template: 200px 1fr / 1fr 1fr;
-      min-height: 400px;
+      min-height: 700px;
       grid-area: 3/1/4/2;
       margin: 20px;
       padding: 40px;
@@ -65,7 +74,7 @@ export const LittleArticleCard = styled.li.attrs(props => ({
   text-wrap: wrap;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   ${props =>
     props.type === "user" &&
     css`

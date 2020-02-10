@@ -2,6 +2,7 @@ import React from "react";
 import * as api from "../../api";
 import { navigate } from "@reach/router";
 import { NewArticleBody } from "../../Styles/Sidebar";
+import { ArticleInfo } from "../../Styles/Main";
 
 class NewArticle extends React.Component {
   state = {
@@ -14,6 +15,7 @@ class NewArticle extends React.Component {
   render() {
     return (
       <NewArticleBody window={window.innerWidth}>
+        <ArticleInfo>by {this.props.user}</ArticleInfo>
         <form onSubmit={this.handleSubmit} className="editArticleForm">
           <label className="newTitle">
             <input

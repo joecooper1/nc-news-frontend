@@ -12,6 +12,7 @@
   .App {
     grid-template: 10vh 10vh 100% / 1fr;
     background-color: purple;
+    background-size: cover;
   }
 }
 
