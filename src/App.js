@@ -22,7 +22,7 @@ class App extends React.Component {
     }
     return (
       <div className="App">
-        <Background />
+        {/* <Background /> */}
         <Header
           resetSearch={this.resetSearch}
           user={this.state.user}
@@ -48,8 +48,14 @@ class App extends React.Component {
   };
 
   changeUser = event => {
+    localStorage.setItem("user", event.target.value);
     this.setState({ user: event.target.value });
   };
+
+  componentDidMount() {
+    localStorage.getItem("user") &&
+      this.setState({ user: localStorage.getItem("user") });
+  }
 }
 
 export default App;

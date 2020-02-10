@@ -18,9 +18,8 @@ for (let i = 1; i < 12; i++) {
           ${Math.floor(num * 80)},
           ${Math.floor(150 - baseNum + num * 80)})`;
       sqArray[i][j].opacity = "100%";
-      sqArray[i][j].filter = "brightness(50)";
       const keyFrameChoose = ["colorChange", "colorChange2"];
-      sqArray[i][j].animationName = keyFrameChoose[Math.floor(num * 2)];
+      // sqArray[i][j].animationName = keyFrameChoose[Math.floor(num * 2)];
       sqArray[i][j].animationDuration = `${30 + num2 * 20}s`;
       const direction = ["normal", "reverse"];
       sqArray[i][j].animationDirection = direction[Math.floor(num * 2)];
