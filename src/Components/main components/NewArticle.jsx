@@ -2,7 +2,7 @@ import React from "react";
 import * as api from "../../api";
 import { navigate } from "@reach/router";
 import { NewArticleBody } from "../../Styles/Sidebar";
-import { ArticleInfo } from "../../Styles/Main";
+import { ArticleInfo, Line } from "../../Styles/Main";
 
 class NewArticle extends React.Component {
   state = {
@@ -16,6 +16,7 @@ class NewArticle extends React.Component {
     return (
       <NewArticleBody window={window.innerWidth}>
         <ArticleInfo>by {this.props.user}</ArticleInfo>
+
         <form onSubmit={this.handleSubmit} className="editArticleForm">
           <label className="newTitle">
             <input
@@ -24,16 +25,20 @@ class NewArticle extends React.Component {
               value={this.state.titleInput}
               className="newTitleInput"
               placeholder="title"
+              style={{ marginTop: "30px" }}
             ></input>
           </label>
+          <Line />
           <textarea
             name="bodyInput"
             onChange={this.handleChange}
             value={this.state.bodyInput}
             className="newBodyInput"
             placeholder="Once upon a time..."
+            style={{ marginTop: "30px" }}
           ></textarea>
-          <label className="newTitle">
+          <Line />
+          <label className="newTitle" style={{ marginTop: "30px" }}>
             Topic: &nbsp;
             <select onChange={this.handleChange} name="chosenTopic">
               {this.state.topics.map(topic => {
@@ -41,7 +46,10 @@ class NewArticle extends React.Component {
               })}
             </select>
           </label>
-          <button disabled={!this.state.titleInput || !this.state.bodyInput}>
+          <button
+            disabled={!this.state.titleInput || !this.state.bodyInput}
+            style={{ display: "inline", float: "right", fontSize: "2em" }}
+          >
             Submit
           </button>
         </form>

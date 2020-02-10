@@ -21,29 +21,26 @@ export const NewArticleButton = styled.button`
 `;
 
 export const NewArticleBody = styled.main`
-  background-color: rgba(255, 255, 255, 0.95);
-  color: white;
-  height: 150%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 400px;
+  height: 800px;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 10px;
+  scroll-behaviour: smooth;
   ${props =>
-    props.window < 600 &&
+    props.window < 980 &&
     css`
       grid-area: 3/2/4/3;
-      margin: 2px 0px 2px 0px;
-      padding: 10px;
-      height: 120%;
-      max-width: 100vw;
-      display: flex;
-      flex-direction: column;
+      margin: 2px;
+      max-width: 98vw;
     `};
   ${props =>
-    props.window >= 600 &&
+    props.window >= 980 &&
     css`
-      display: grid;
-      grid-template: 200px 1fr / 1fr 1fr;
-      min-height: 700px;
       grid-area: 3/1/4/2;
       margin: 20px;
-      padding: 40px;
     `};
 `;
 
