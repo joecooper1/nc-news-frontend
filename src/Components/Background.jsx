@@ -34,36 +34,39 @@ class Background extends React.Component {
       }
     }
 
-    return (
-      <div id="background">
-        {sqArray.map(newSq =>
-          newSq.map(sq => {
-            if (sq !== "hi")
-              return (
-                <div
-                  className="hex"
-                  style={{
-                    fontSize: "300px",
-                    zIndex: sq.i,
-                    gridArea: `${sq.i}/${sq.j}/${sq.i}/${sq.j}`,
-                    color: sq.color,
-                    opacity: sq.opacity,
-                    filter: sq.filter,
-                    animationName: sq.animationName,
-                    animationDuration: sq.animationDuration,
-                    animationDirection: sq.animationDirection,
-                    animationIterationCount: sq.animationIterationCount,
-                    position: sq.position,
-                    left: sq.left
-                  }}
-                >
-                  &#x2B22;
-                </div>
-              );
-          })
-        )}
-      </div>
-    );
+    if (window.innerWidth >= 600)
+      return (
+        <div id="background">
+          {sqArray.map(newSq =>
+            newSq.map(sq => {
+              if (sq !== "hi")
+                return (
+                  <div
+                    className="hex"
+                    key={sq.i + sq.j}
+                    style={{
+                      fontSize: "300px",
+                      zIndex: sq.i,
+                      gridArea: `${sq.i}/${sq.j}/${sq.i}/${sq.j}`,
+                      color: sq.color,
+                      opacity: sq.opacity,
+                      filter: sq.filter,
+                      animationName: sq.animationName,
+                      animationDuration: sq.animationDuration,
+                      animationDirection: sq.animationDirection,
+                      animationIterationCount: sq.animationIterationCount,
+                      position: sq.position,
+                      left: sq.left
+                    }}
+                  >
+                    &#x2B22;
+                  </div>
+                );
+            })
+          )}
+        </div>
+      );
+    else return <div></div>;
   }
 }
 

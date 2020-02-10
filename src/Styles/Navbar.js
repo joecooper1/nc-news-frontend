@@ -19,6 +19,10 @@ export const TopicItem = styled.li.attrs(props => ({ key: props.key }))`
 export const SearchBarForm = styled.div`
   margin-right: 20px;
   float: right;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 30px;
+  padding-left: 10px;
 `;
 
 export const GoButton = styled.button`
