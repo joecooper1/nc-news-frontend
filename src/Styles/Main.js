@@ -106,7 +106,7 @@ export const CommentsDisplay = styled.ul`
     props.window < 600 &&
     css`
       width: 85%;
-      margin-left: -5%;
+      margin-left: 0%;
     `};
   ${props =>
     props.window >= 600 &&
