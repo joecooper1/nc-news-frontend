@@ -4,7 +4,7 @@ export const TopicList = styled.ul`
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  width: 20vw;
+  width: 250px;
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
