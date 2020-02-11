@@ -12,16 +12,18 @@ class Login extends React.Component {
     if (window.innerWidth < 600) loggedInAs = "";
     return (
       <LogInBar window={window.innerWidth}>
-        <p>{loggedInAs}</p> &nbsp; &nbsp;
-        <UserDropDown
-          user={this.props.user}
-          onChange={this.props.changeUser}
-          window={window.innerWidth}
-        >
-          {this.state.users.map(user => {
-            return <option key={user}>{user}</option>;
-          })}
-        </UserDropDown>
+        <label>
+          {loggedInAs} &nbsp;
+          <UserDropDown
+            user={this.props.user}
+            onChange={this.props.changeUser}
+            window={window.innerWidth}
+          >
+            {this.state.users.map(user => {
+              return <option key={user}>{user}</option>;
+            })}
+          </UserDropDown>
+        </label>
       </LogInBar>
     );
   }

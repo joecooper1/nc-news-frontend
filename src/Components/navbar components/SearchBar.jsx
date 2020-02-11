@@ -5,11 +5,9 @@ class SearchBar extends React.Component {
   state = { searchInput: "" };
 
   render() {
-    let inputWidth = "90px";
     let placeHolder = "javascript";
     let search = "Search";
     if (window.innerWidth < 600) {
-      inputWidth = "40vw";
       placeHolder = "search";
       search = "";
     }
@@ -23,7 +21,6 @@ class SearchBar extends React.Component {
               placeholder={placeHolder}
               value={this.state.searchInput}
               onChange={this.handleChange}
-              style={{ width: inputWidth, transition: "width 1s" }}
               className="searchBar"
             ></input>
           </label>
