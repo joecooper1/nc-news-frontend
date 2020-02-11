@@ -11,8 +11,9 @@ class Comment extends React.Component {
 
   render() {
     const comment = this.props.comment;
-    let deleteOption = "";
 
+    //A delete button only shows if logged in as the author of comment
+    let deleteOption = "";
     if (comment.author === this.props.user) {
       deleteOption = (
         <DeleteButton>
@@ -30,6 +31,9 @@ class Comment extends React.Component {
       );
     }
 
+    // Vote buttons are disabled on click until after page refresh, currently no memory in api
+    // of who has voted for what.
+    // The created_at date and time is sliced in two parts from a longer format string.
     return (
       <CommentStyle>
         <aside>
@@ -73,6 +77,7 @@ class Comment extends React.Component {
     this.setState({ votes: this.props.comment.votes });
   }
 
+  //Increase votes by one, optimistic rendering!!, and disable further voting.
   handleClick = (comment_id, num) => {
     this.props.vote(comment_id, num);
     this.setState(currentState => {

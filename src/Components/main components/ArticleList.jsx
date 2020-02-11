@@ -10,6 +10,7 @@ import {
 import * as api from "../../api";
 import { Link } from "@reach/router";
 import FavStar from "./FavStar";
+import football from "../../images/image-asset.jpeg";
 
 class ArticleList extends React.Component {
   state = {
@@ -48,8 +49,12 @@ class ArticleList extends React.Component {
             const articleLink = `/articles/${article.article_id}`;
             const topicLink = `/${article.topic}`;
             const userLink = `/users/${article.author}`;
+            const pics = {
+              football: "../../"
+            };
             return (
               <ArticleCard key={article.article_id} window={window.innerWidth}>
+                {/* <img src={football} alt="football players" />{" "} */}
                 <h3>
                   <Link to={articleLink}>{article.title}</Link>
                 </h3>{" "}

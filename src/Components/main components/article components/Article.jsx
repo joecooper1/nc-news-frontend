@@ -24,10 +24,13 @@ class Article extends React.Component {
 
   render() {
     const { article } = this.state;
+    //Sets what user page to link to when author name is clicked
     const userLink = `/users/${article.author}`;
 
     let commentBox = "";
     let comments = "";
+
+    // If comments are set to not visible, nothing will show. Toggled with show comments button
     if (this.state.visibleComments === false) {
       commentBox = "Show comments";
       comments = <div></div>;
@@ -41,6 +44,7 @@ class Article extends React.Component {
       );
     }
 
+    // If no article object is found, error message displays
     if (this.state.isLoading) {
       return <LoadingBar>Loading...</LoadingBar>;
     } else if (article.created_at === "") {
@@ -112,15 +116,14 @@ class Article extends React.Component {
   };
 
   commitChanges = articleInput => {
-    api
-      .patchArticle(articleInput, this.state.article.article_id)
-      .then(articleResponse => {
-        return this.setState({
-          articleEdit: false
-        });
+    api.patchArticle(articleInput, this.state.article.article_id).then(() => {
+      return this.setState({
+        articleEdit: false
       });
+    });
   };
 
+  // Undo edit, close edit box
   cancelChanges = () => {
     this.setState({
       articleEdit: false
@@ -128,7 +131,6 @@ class Article extends React.Component {
   };
 
   removeArticle = event => {
-    console.log("here");
     event.preventDefault();
     api.deleteArticleById(this.state.article.article_id).then(() => {
       navigate("/");

@@ -95,6 +95,8 @@ a {
   height: 30px;
 }
 
+/* CSS for the new article page */
+
 .editArticleForm {
   width: 95%;
   line-height: 1em;
@@ -172,10 +174,12 @@ a {
   font-weight: bold;
 }
 
+/* makes username and topic on ArticleCard highlight on hover */
 .bold:hover {
   text-decoration: underline;
 }
 
+/* colorchange animations slow down the app quite a lot, so are currently unused */
 @keyframes colorChange {
   0% {
     filter: invert(10%);
@@ -218,6 +222,7 @@ a {
   }
 }
 
+/* Sets outlines for hexagones */
 .hex {
   text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
     2px 2px 0 #000;

@@ -2,6 +2,8 @@ import React from "react";
 import * as api from "../../api";
 import { LogInBar, UserDropDown } from "../../Styles/Title";
 
+//User dropdown uses list of existing users from api. Not currently an 'add user' function
+
 class Login extends React.Component {
   state = { users: [] };
 

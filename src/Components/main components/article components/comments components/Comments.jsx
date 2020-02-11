@@ -11,8 +11,11 @@ class Comments extends React.Component {
   };
 
   render() {
+    // Submit will not work unless body of the new text is not empty
     let disableSubmit = true;
     if (this.state.commentInput.length > 0) disableSubmit = false;
+
+    // Only show new comment textbox if new comment button is clicked
     let typeNewComment = "";
     if (this.state.newComment) {
       typeNewComment = (
@@ -59,10 +62,12 @@ class Comments extends React.Component {
       });
   }
 
+  // Works for increase and descrease votes
   vote(comment_id, num) {
     api.patchVotes("comments", comment_id, num).then(() => {});
   }
 
+  //Does not render optimistically
   deleteComment = comment_id => {
     api.deleteCommentById(comment_id).then(() => {
       api
@@ -75,12 +80,14 @@ class Comments extends React.Component {
     });
   };
 
+  // Enables and disables the textbox for new comments
   addCommentToggle = () => {
     this.setState(currentState => {
       return { newComment: !currentState.newComment };
     });
   };
 
+  // Handles new comment input, feeding it back to state
   handleChange = event => {
     this.setState({ commentInput: event.target.value });
   };

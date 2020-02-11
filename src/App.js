@@ -14,14 +14,17 @@ class App extends React.Component {
   };
 
   render() {
+    //Automatically rerender when window size changes
     window.addEventListener("resize", this.handleResize);
+
+    //If window if smaller than 980 pixels, remove sidebar completely
     let sideBar = <SideBar />;
     if (window.innerWidth < 980) {
       sideBar = "";
     }
+
     return (
       <div className="App">
-        {/* <Background /> */}
         <Header
           resetSearch={this.resetSearch}
           user={this.state.user}
@@ -38,14 +41,17 @@ class App extends React.Component {
     this.setState({ window: window.innerWidth });
   };
 
+  //Search titles only by searchterm, inputed from searchbar component
   doSearch = input => {
     this.setState({ searchTerm: input });
   };
 
+  //Resets search whenever a different filter is applied - could remove this if wanted
   resetSearch = () => {
     this.setState({ searchTerm: "" });
   };
 
+  //Stores user info in local storage, to be consistent across refreshes
   changeUser = event => {
     localStorage.setItem("user", event.target.value);
     this.setState({ user: event.target.value });

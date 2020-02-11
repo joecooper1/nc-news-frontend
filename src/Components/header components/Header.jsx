@@ -3,6 +3,8 @@ import Login from "./Login";
 import { Title } from "../../Styles/Title";
 import { Link } from "@reach/router";
 
+//Site header links back to main page
+
 const Header = props => {
   return (
     <header>
