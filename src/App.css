@@ -6,7 +6,7 @@
   margin-top: 0;
   display: grid;
   grid-template: 10vh 10vh 100% / 7fr 3fr;
-  background-color: rgb(17, 22, 47);
+  /* background-color: rgb(17, 22, 47); */
 }
 
 @media only screen and (max-width: 980px) {

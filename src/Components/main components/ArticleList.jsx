@@ -24,7 +24,7 @@ class ArticleList extends React.Component {
 
   render() {
     if (this.state.isLoading) {
-      return <LoadingBar>&#x2B22;</LoadingBar>;
+      return <LoadingBar>Loading...</LoadingBar>;
     } else if (this.state.articles.length === 0) {
       return (
         <EmptyList>
